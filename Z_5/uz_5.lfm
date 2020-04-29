@@ -1,0 +1,143 @@
+object Form1: TForm1
+  Left = 873
+  Height = 280
+  Top = 243
+  Width = 722
+  Caption = 'Programm Z5'
+  ClientHeight = 260
+  ClientWidth = 722
+  Menu = MainMenu1
+  OnCreate = FormCreate
+  LCLVersion = '2.0.6.0'
+  object Number1Edit: TEdit
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Result
+    Left = 104
+    Height = 23
+    Top = 16
+    Width = 96
+    Anchors = [akTop, akRight]
+    BorderSpacing.Top = 16
+    BorderSpacing.Right = 17
+    OnChange = Number1EditChange
+    TabOrder = 0
+    Text = '0'
+  end
+  object Number2Edit: TEdit
+    AnchorSideTop.Control = Number1Edit
+    AnchorSideRight.Control = Memo1
+    Left = 104
+    Height = 23
+    Top = 56
+    Width = 96
+    Anchors = [akTop, akRight]
+    BorderSpacing.Top = 40
+    BorderSpacing.Right = 17
+    OnChange = Number2EditChange
+    TabOrder = 1
+    Text = '0'
+  end
+  object Number1: TLabel
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Number1Edit
+    Left = 32
+    Height = 15
+    Top = 16
+    Width = 44
+    Anchors = [akTop, akRight]
+    BorderSpacing.Top = 16
+    BorderSpacing.Right = 28
+    Caption = 'Число 1'
+    ParentColor = False
+    OnClick = Number1Click
+  end
+  object Number2: TLabel
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Number2Edit
+    Left = 32
+    Height = 15
+    Top = 56
+    Width = 44
+    Anchors = [akTop, akRight]
+    BorderSpacing.Top = 56
+    BorderSpacing.Right = 28
+    Caption = 'Число 2'
+    ParentColor = False
+  end
+  object Result: TButton
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrCenter
+    Left = 217
+    Height = 24
+    Top = 16
+    Width = 288
+    Anchors = [akTop, akRight]
+    BorderSpacing.Top = 16
+    Caption = 'Вычислить ср. ариф. и ср. геом.'
+    OnClick = ResultClick
+    TabOrder = 2
+  end
+  object Memo1: TMemo
+    AnchorSideTop.Control = Result
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrCenter
+    Left = 217
+    Height = 162
+    Top = 56
+    Width = 287
+    Anchors = [akTop, akRight]
+    BorderSpacing.Top = 16
+    Lines.Strings = (
+      'Memo1'
+    )
+    ScrollBars = ssVertical
+    TabOrder = 3
+  end
+  object MainMenu1: TMainMenu
+    left = 56
+    top = 112
+    object File1: TMenuItem
+      Caption = 'Файл'
+      object load1: TMenuItem
+        Caption = 'Открыть'
+        OnClick = load1Click
+      end
+      object Save1: TMenuItem
+        Caption = 'Сохранить'
+        OnClick = Save1Click
+      end
+      object SaveLog1: TMenuItem
+        Caption = 'Сохранить отчет'
+        OnClick = SaveLog1Click
+      end
+    end
+    object Reference: TMenuItem
+      Caption = 'Справка'
+      OnClick = ReferenceClick
+    end
+    object ClosePrg: TMenuItem
+      Caption = 'Выход'
+      OnClick = ClosePrgClick
+    end
+  end
+  object Load: TOpenDialog
+    Filter = 'Текстовый файл|*.txt|Файл data|*.dat|Все|*.*'
+    InitialDir = 'g:\'
+    left = 8
+    top = 112
+  end
+  object Save: TSaveDialog
+    Filter = 'Текстовый файл|*.txt|Файл data|*.dat|Все|*.*'
+    InitialDir = 'G:\Папка\Задачи по программированию\Арифметика действительных чисел\Z_5\Lazarus'
+    left = 8
+    top = 168
+  end
+  object SaveLog: TSaveDialog
+    Filter = 'Текстовой файл|*.txt|Файл data|*.dat|Все файлы|*.*'
+    InitialDir = 'G:\Папка\Задачи по программированию\Арифметика действительных чисел\Z_5\Lazarus'
+    left = 56
+    top = 168
+  end
+end
