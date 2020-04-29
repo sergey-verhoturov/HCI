@@ -1,0 +1,170 @@
+object Form1: TForm1
+  Left = 766
+  Height = 314
+  Top = 380
+  Width = 654
+  Caption = 'Programm Z23a'
+  ClientHeight = 294
+  ClientWidth = 654
+  Menu = MainMenu1
+  LCLVersion = '2.0.6.0'
+  object Label1: TLabel
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = StrAEdit
+    Left = 33
+    Height = 15
+    Top = 14
+    Width = 58
+    Anchors = [akTop, akRight]
+    BorderSpacing.Top = 14
+    BorderSpacing.Right = 21
+    Caption = 'Сторона A'
+    ParentColor = False
+    OnClick = Label1Click
+  end
+  object Label2: TLabel
+    AnchorSideTop.Control = Label1
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = StrAEdit
+    Left = 34
+    Height = 15
+    Top = 56
+    Width = 57
+    Anchors = [akTop, akRight]
+    BorderSpacing.Top = 27
+    BorderSpacing.Right = 21
+    Caption = 'Сторона B'
+    ParentColor = False
+  end
+  object Label3: TLabel
+    AnchorSideTop.Control = Label2
+    AnchorSideRight.Control = StrCEdit
+    Left = 33
+    Height = 15
+    Top = 96
+    Width = 58
+    Anchors = [akTop, akRight]
+    BorderSpacing.Top = 40
+    BorderSpacing.Right = 21
+    Caption = 'Сторона C'
+    ParentColor = False
+  end
+  object StrAEdit: TEdit
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Button1
+    Left = 112
+    Height = 23
+    Top = 14
+    Width = 81
+    Anchors = [akTop, akRight]
+    BorderSpacing.Top = 14
+    BorderSpacing.Right = 28
+    OnChange = StrAEditChange
+    TabOrder = 0
+    Text = '0'
+  end
+  object StrBEdit: TEdit
+    AnchorSideTop.Control = StrAEdit
+    AnchorSideRight.Control = Memo1
+    AnchorSideRight.Side = asrBottom
+    Left = 112
+    Height = 23
+    Top = 56
+    Width = 81
+    Anchors = [akTop, akRight]
+    BorderSpacing.Top = 42
+    BorderSpacing.Right = 240
+    TabOrder = 1
+    Text = '0'
+  end
+  object StrCEdit: TEdit
+    AnchorSideTop.Control = StrBEdit
+    AnchorSideRight.Control = Memo1
+    Left = 112
+    Height = 23
+    Top = 96
+    Width = 81
+    Anchors = [akTop, akRight]
+    BorderSpacing.Top = 40
+    BorderSpacing.Right = 28
+    TabOrder = 2
+    Text = '0'
+  end
+  object Button1: TButton
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrCenter
+    Left = 221
+    Height = 25
+    Top = 14
+    Width = 212
+    Anchors = [akTop, akRight]
+    BorderSpacing.Top = 14
+    BorderSpacing.Right = 53
+    Caption = 'Вычислить высоты'
+    OnClick = Button1Click
+    TabOrder = 3
+  end
+  object Memo1: TMemo
+    AnchorSideTop.Control = Button1
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrCenter
+    Left = 221
+    Height = 211
+    Top = 56
+    Width = 212
+    Anchors = [akTop, akRight]
+    BorderSpacing.Top = 42
+    BorderSpacing.Right = 53
+    Lines.Strings = (
+      'Memo1'
+    )
+    ScrollBars = ssVertical
+    TabOrder = 4
+  end
+  object MainMenu1: TMainMenu
+    left = 24
+    top = 144
+    object MenuItem1: TMenuItem
+      Caption = 'Файл'
+      object Load2: TMenuItem
+        Caption = 'Открыть'
+        OnClick = Load2Click
+      end
+      object Save2: TMenuItem
+        Caption = 'Сохранить'
+        OnClick = Save2Click
+      end
+      object SaveLog2: TMenuItem
+        Caption = 'Сохранить отчет'
+        OnClick = SaveLog2Click
+      end
+    end
+    object Reference: TMenuItem
+      Caption = 'Спрвка'
+      OnClick = ReferenceClick
+    end
+    object ExitPrg: TMenuItem
+      Caption = 'Выход'
+      OnClick = ExitPrgClick
+    end
+  end
+  object Load: TOpenDialog
+    Filter = 'Текстовой файл|*.txt|Файл data|*.dat|Все файлы|*.*'
+    InitialDir = 'g:\'
+    left = 96
+    top = 144
+  end
+  object Save: TSaveDialog
+    Filter = 'Текстовой файл|*.txt|Файл data|*.dat|Все файлы|*.*'
+    InitialDir = 'G:\Папка\Задачи по программированию\Арифметика действительных чисел\Z_23a\Lazarus'
+    left = 24
+    top = 208
+  end
+  object SaveLog: TSaveDialog
+    Filter = 'Текстовой файл|*.txt|Файл data|*.dat|Все файлы|*.*'
+    InitialDir = 'G:\Папка\Задачи по программированию\Арифметика действительных чисел\Z_23a\Lazarus'
+    left = 96
+    top = 208
+  end
+end
