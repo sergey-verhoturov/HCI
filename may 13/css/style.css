@@ -187,6 +187,25 @@ code{
   white-space: pre-wrap   
 }
 
+/* Кнопка */
+.click-me{
+  background: #797979;      /* --- */
+  color: var(--text);
+  border-radius: 8px;
+  padding: 8px 20px;
+
+  margin-top: 15px; 
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 800;             /* --- */
+ 
+}
+
+/* Выделение кнопки при наведении */
+.click-me:hover{
+  background: var(--primary);      /* --- */
+  color: #797979;
+}
 
 
 footer{
