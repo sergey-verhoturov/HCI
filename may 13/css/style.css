@@ -27,7 +27,7 @@
 
 /* Для всей страницы !!! */
 body{
-  font-family: URW Chancery L, cursive;  /* Основной и запасной шрифт */
+  font-family: Helvetica, sans-serif;  /* Основной и запасной шрифт */
   font-size: var(--size);
   color: var(--text);
   background: #041638;     /* !!! */
