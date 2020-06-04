@@ -5,7 +5,8 @@ unit UZ_5;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Menus;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Menus, Grids,
+  logic;
 
 type
 
@@ -16,6 +17,7 @@ type
     Load: TOpenDialog;
     File1: TMenuItem;
     load1: TMenuItem;
+    Memo1: TMemo;
     Save1: TMenuItem;
     SaveLog1: TMenuItem;
     Reference: TMenuItem;
@@ -24,7 +26,6 @@ type
     Result: TButton;
     Number1: TLabel;      //Объект данного класса
     Number2: TLabel;
-    Memo1: TMemo;
     Number2Edit: TEdit;
     Number1Edit: TEdit;
     Save: TSaveDialog;       //Конец поля класса
@@ -38,6 +39,7 @@ type
     procedure Number2EditChange(Sender: TObject);
     procedure Save1Click(Sender: TObject);
     procedure SaveLog1Click(Sender: TObject);
+    function DataFromForm:boolean;
 
   private
 
@@ -48,12 +50,42 @@ type
 var
   Form1: TForm1;
   A,B:real;
+  var calcM: array[1..128] of Calculation;
+  var calc: Calculation;
+  row:integer;
 
 implementation
 
 {$R *.lfm}
 
 { TForm1 }
+
+function TForm1.DataFromForm:boolean;
+var err:string;
+flag:boolean;
+begin
+  result:=false; flag:=false;
+  if TryStrToFloat(Number1Edit.text,A) = false then
+  begin
+     err:=err+'Неверный ввод параметра A'+#10;
+     Number1Edit.Color:=clRed; flag:=True;
+  end
+  else Number1Edit.Color:=clWhite;
+
+  if TryStrToFloat(Number2Edit.text,B)=false then
+    begin
+    err:=err+'Неверный ввод параметра B'+#10;
+    Number2Edit.Color:=clRed; flag:=True;
+    end
+  else Number2Edit.Color:=clWhite;
+
+  if flag = true then
+  begin
+  ShowMessage(err);
+  exit;
+  end;
+  result:=true;
+end;
 
 procedure TForm1.Number2EditChange(Sender: TObject);
 begin
@@ -62,23 +94,25 @@ end;
 
 
 procedure TForm1.SaveLog1Click(Sender: TObject);
+
 begin
-        If SaveLog.Execute then
+          If SaveLog.Execute then
   Memo1.Lines.SaveToFile(Savelog.FileName);
+
 end;
 
+
 procedure TForm1.Save1Click(Sender: TObject);
-var
- f:text;
-begin
-   If Save.Execute then
-AssignFile(f, Save.FileName);
-Rewrite(f);
- write(f, 'Число 1:');
-write(f, Number1Edit.Text);
-write(f, 'Число 2:');
-write(f, Number2Edit.Text);
-closefile(f);
+  var s1,s2: string;
+   begin
+   if DataFromForm = False then exit;
+   if Savelog.Execute then
+          if Savelog.FileName <> '' then
+              begin
+   s1:=Form1.Number1Edit.Text;
+   s2:=Form1.Number2Edit.Text;
+   save_params(s1,s2, Savelog.filename);
+   end;
 end;
 
 
@@ -88,41 +122,39 @@ begin
 end;
 
 procedure TForm1.ResultClick(Sender: TObject);
-  var A,B,SrA,SrG:Real;
 begin
-     A:=StrToFloat(Number1Edit.Text);
-     B:=StrToFloat(Number2Edit.Text);
-     if A<0 then ShowMessage('Неправильно введёна 1 переменная ');
-     if B<0 then ShowMessage('Неправильно введёна 2 переменная ');
-     SrA:=sqrt(A*B);
-     SrG:=(A+B)/2;
-     Memo1.Lines.Add('Число 1:');
-     Memo1.Lines.Add(FloatToStr(A));
-     Memo1.Lines.Add('Число 2:');
-     Memo1.Lines.Add(FloatToStr(B));
-     Memo1.Lines.Add('Среднее арифметическое:');
-     Memo1.Lines.Add(FloatToStr(SrA));
-     Memo1.Lines.Add('Среднее геометрическое:');
-     Memo1.Lines.Add(FloatToStr(SrG));
-     Memo1.Lines.Add('-----------------------');
+if DataFromForm = False then exit;
+calcSR(A,B,calc);
+Memo1.Lines.Add('Число 1:');
+Memo1.Lines.Add(FloatToStr(calc.A));
+Memo1.Lines.Add('Число 2:');
+Memo1.Lines.Add(FloatToStr(calc.B));
+Memo1.Lines.Add('Среднее арифметическое:');
+Memo1.Lines.Add(FloatToStr(calc.SrA));
+Memo1.Lines.Add('Среднее геометрическое:');
+Memo1.Lines.Add(FloatToStr(calc.SrG));
+Memo1.Lines.Add('-----------------------');
 end;
 
 procedure TForm1.Load1Click(Sender: TObject);
-  var f: textfile;
-    FName, s1, s2 : string;
+var s1, s2 : string;
   begin
     if Load.Execute then
   begin
-  FName := Load.FileName;
-  AssignFile(f,FName);
-  Reset(f);
-  readln(f,s1);
-  readln(f,s2);
-  Number1Edit.Text:= s1;
-  Number2Edit.Text:= s2;
+  if load.FileName <> '' then
+       begin
+ load_params(s1,s2,load.filename);
+ Number1Edit.Text:=s1;
+ Number2Edit.Text:=s2;
+       end;
   end;
-  closeFile(f);
+
   end;
+
+//procedure TForm1.Memo1Change(Sender: TObject);
+//begin
+//
+//end;
 
 procedure TForm1.ReferenceClick(Sender: TObject);
 begin
