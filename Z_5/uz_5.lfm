@@ -1,22 +1,23 @@
 object Form1: TForm1
-  Left = 873
-  Height = 280
-  Top = 243
-  Width = 722
+  Left = 453
+  Height = 297
+  Top = 260
+  Width = 545
+  Anchors = []
   Caption = 'Programm Z5'
-  ClientHeight = 260
-  ClientWidth = 722
+  ClientHeight = 277
+  ClientWidth = 545
   Menu = MainMenu1
   OnCreate = FormCreate
   LCLVersion = '2.0.6.0'
   object Number1Edit: TEdit
     AnchorSideTop.Control = Owner
     AnchorSideRight.Control = Result
-    Left = 104
+    Left = 80
     Height = 23
     Top = 16
-    Width = 96
-    Anchors = [akTop, akRight]
+    Width = 74
+    Anchors = []
     BorderSpacing.Top = 16
     BorderSpacing.Right = 17
     OnChange = Number1EditChange
@@ -24,15 +25,16 @@ object Form1: TForm1
     Text = '0'
   end
   object Number2Edit: TEdit
-    AnchorSideTop.Control = Number1Edit
-    AnchorSideRight.Control = Memo1
-    Left = 104
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 80
     Height = 23
     Top = 56
-    Width = 96
-    Anchors = [akTop, akRight]
-    BorderSpacing.Top = 40
-    BorderSpacing.Right = 17
+    Width = 74
+    Anchors = [akTop]
+    BorderSpacing.Left = 4
+    BorderSpacing.Top = 56
+    BorderSpacing.Right = 705
     OnChange = Number2EditChange
     TabOrder = 1
     Text = '0'
@@ -40,13 +42,13 @@ object Form1: TForm1
   object Number1: TLabel
     AnchorSideTop.Control = Owner
     AnchorSideRight.Control = Number1Edit
-    Left = 32
+    Left = 17
     Height = 15
     Top = 16
     Width = 44
     Anchors = [akTop, akRight]
     BorderSpacing.Top = 16
-    BorderSpacing.Right = 28
+    BorderSpacing.Right = 19
     Caption = 'Число 1'
     ParentColor = False
     OnClick = Number1Click
@@ -54,45 +56,42 @@ object Form1: TForm1
   object Number2: TLabel
     AnchorSideTop.Control = Owner
     AnchorSideRight.Control = Number2Edit
-    Left = 32
+    Left = 17
     Height = 15
     Top = 56
     Width = 44
     Anchors = [akTop, akRight]
     BorderSpacing.Top = 56
-    BorderSpacing.Right = 28
+    BorderSpacing.Right = 19
     Caption = 'Число 2'
     ParentColor = False
   end
   object Result: TButton
     AnchorSideTop.Control = Owner
     AnchorSideRight.Control = Owner
-    AnchorSideRight.Side = asrCenter
-    Left = 217
-    Height = 24
+    AnchorSideRight.Side = asrBottom
+    Left = 191
+    Height = 63
     Top = 16
     Width = 288
-    Anchors = [akTop, akRight]
+    Anchors = [akTop]
     BorderSpacing.Top = 16
+    BorderSpacing.Right = 401
     Caption = 'Вычислить ср. ариф. и ср. геом.'
     OnClick = ResultClick
     TabOrder = 2
   end
   object Memo1: TMemo
     AnchorSideTop.Control = Result
-    AnchorSideTop.Side = asrBottom
-    AnchorSideRight.Control = Owner
-    AnchorSideRight.Side = asrCenter
-    Left = 217
-    Height = 162
-    Top = 56
-    Width = 287
-    Anchors = [akTop, akRight]
-    BorderSpacing.Top = 16
+    Left = 191
+    Height = 161
+    Top = 98
+    Width = 288
+    Anchors = [akTop]
+    BorderSpacing.Top = 82
     Lines.Strings = (
       'Memo1'
     )
-    ScrollBars = ssVertical
     TabOrder = 3
   end
   object MainMenu1: TMainMenu
