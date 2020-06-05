@@ -10,7 +10,6 @@ type
   Calculation = record
     A, B, C: Real;
     HA, HB, HC: Real;
-    p:real;
   end;
 
 function calcHeight(A:real; B: Real; C:real; var calc:Calculation):real;
