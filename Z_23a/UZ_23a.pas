@@ -5,7 +5,7 @@ unit UZ_23a;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Menus;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Menus, Logic;
 
 type
 
@@ -34,10 +34,12 @@ type
     procedure ExitPrgClick(Sender: TObject);
     procedure Label1Click(Sender: TObject);
     procedure Load2Click(Sender: TObject);       //Если пользователь откажется от
+    procedure Memo1Change(Sender: TObject);
     procedure ReferenceClick(Sender: TObject);    //выбора файлов, то выйдет ошибка 103
     procedure Save2Click(Sender: TObject);
     procedure SaveLog2Click(Sender: TObject);
     procedure StrAEditChange(Sender: TObject);
+    procedure DataFromForm();
   private
 
   public
@@ -46,6 +48,9 @@ type
 
 var
   Form1: TForm1;
+  A,B,C,p:real;
+  var calcM: array[1..128] of Calculation;
+  var calc: Calculation;
 
 implementation
 
@@ -53,33 +58,46 @@ implementation
 
 { TForm1 }
 
-procedure TForm1.Button1Click(Sender: TObject);
-    var A,B,C,p,HA,HB,HC:Real;
+
+procedure TForm1.DataFromForm();
 begin
-     A:=StrToFloat(StrAEdit.Text);
-     B:=StrToFloat(StrBEdit.Text);
-     C:=StrToFloat(StrCEdit.Text);
-     if A<0 then ShowMessage('Неправильно введена сторона A ');
-     if B<0 then ShowMessage('Неправильно введена сторона B ');
-     if C<0 then ShowMessage('Неправильно введена сторона C ');
-     p:=1/2*(A+B+C);
-     HA:=(2/A)*sqrt(p*(p-A)*(p-B)*(p-C));
-     HB:=(2/B)*sqrt(p*(p-A)*(p-B)*(p-C));
-     HC:=(2/C)*sqrt(p*(p-A)*(p-B)*(p-C));
+  if TryStrToFloat(StrAEdit.Text, A) = false then
+    begin
+    StrAEdit.Color:= clGradientActiveCaption;
+    ShowMessage('Неправильно введён параметр A');
+    exit;
+    end;
+
+  if TryStrToFloat(StrBEdit.Text, B) = false then
+      begin
+      ShowMessage('Неправильно введён параметр B');
+      exit;
+      end;
+
+    if TryStrToFloat(StrCEdit.Text, C) = false then
+      begin
+      ShowMessage('Неправильно введён параметр C');
+      exit;
+      end;
+end;
+
+
+procedure TForm1.Button1Click(Sender: TObject);
+begin
+    DataFromForm();
+     calcHeight(A,B,C,calc);
      Memo1.Lines.Add('Сторона A');
-     Memo1.Lines.Add( FloatToStr(A));
+     Memo1.Lines.Add(FloatToStr(calc.A));
      Memo1.Lines.Add('Сторона B');
-     Memo1.Lines.Add(FloatToStr(B));
+     Memo1.Lines.Add(FloatToStr(calc.B));
      Memo1.Lines.Add('Сторона C');
-     Memo1.Lines.Add( FloatToStr(C));
-     Memo1.Lines.Add('Полупериметр');
-     Memo1.Lines.Add(FloatToStr(p));
+     Memo1.Lines.Add( FloatToStr(calc.C));
      Memo1.Lines.Add('Высота A');
-     Memo1.Lines.Add(FloatToStr(HA));
+     Memo1.Lines.Add(FloatToStr(calc.HA));
      Memo1.Lines.Add('Высота B');
-     Memo1.Lines.Add(FloatToStr(HB));
+     Memo1.Lines.Add(FloatToStr(calc.HB));
      Memo1.Lines.Add('Высота C');
-     Memo1.Lines.Add(FloatToStr(HC));
+     Memo1.Lines.Add(FloatToStr(calc.HC));
      Memo1.Lines.Add('-----------------------');
 end;
 
@@ -95,22 +113,23 @@ end;
 
 
 procedure TForm1.Load2Click(Sender: TObject);
-var f: textfile;
-  FName, s1, s2, s3 : string;
-begin
-  if Load.Execute then
-begin
-FName := Load.FileName;
-AssignFile(f,FName);
-Reset(f);
-readln(f,s1);
-readln(f,s2);
-readln(f,s3);
-StrAEdit.Text:= s1;
-StrBEdit.Text:= s2;
-StrCEdit.Text:= s3;
+     var s1, s2, s3 : string;
+       begin
+         if Load.Execute then
+       begin
+       if load.FileName <> '' then
+            begin
+      load_params(s1,s2, s3, load.filename);
+      StrAEdit.Text:=s1;
+      StrBEdit.Text:=s2;
+      StrCEdit.Text:=s3;
+            end;
+       end;
 end;
-closeFile(f);
+
+procedure TForm1.Memo1Change(Sender: TObject);
+begin
+
 end;
 
 procedure TForm1.ReferenceClick(Sender: TObject);
@@ -119,19 +138,16 @@ begin
 end;
 
 procedure TForm1.Save2Click(Sender: TObject);
-     var
-  f:text;
-  begin
-     If Save.Execute then
-  AssignFile(f, Save.FileName);
-  Rewrite(f);
-   write(f, 'Сторона А: ');
-  write(f, StrAEdit.Text);
-  write(f, 'Сторона B: ');
-  write(f, StrBEdit.Text);
-  write(f, 'Сторона C: ');
-  write(f, StrCEdit.Text);
-  closefile(f);
+    var s1,s2, s3: string;
+   begin
+   if Savelog.Execute then
+          if Savelog.FileName <> '' then
+              begin
+   s1:=Form1.StrAEdit.Text;
+   s2:=Form1.StrBEdit.Text;
+   s3:=Form1.StrCEdit.Text;
+   save_params(s1,s2, s3, Savelog.filename);
+   end;
 end;
 
 

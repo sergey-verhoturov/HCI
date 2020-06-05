@@ -110,15 +110,16 @@ object Form1: TForm1
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrCenter
     Left = 221
-    Height = 211
+    Height = 216
     Top = 56
     Width = 212
     Anchors = [akTop, akRight]
     BorderSpacing.Top = 42
     BorderSpacing.Right = 53
     Lines.Strings = (
-      'Memo1'
+      ''
     )
+    OnChange = Memo1Change
     ScrollBars = ssVertical
     TabOrder = 4
   end
