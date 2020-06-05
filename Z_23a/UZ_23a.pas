@@ -48,7 +48,7 @@ type
 
 var
   Form1: TForm1;
-  A,B,C,p:real;
+  A,B,C:real;
   var calcM: array[1..128] of Calculation;
   var calc: Calculation;
 
