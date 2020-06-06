@@ -1,35 +1,36 @@
 object Form1: TForm1
-  Left = 453
+  Left = 305
   Height = 297
-  Top = 260
-  Width = 873
+  Top = 213
+  Width = 1014
   Anchors = []
   Caption = 'Programm Z5'
   ClientHeight = 277
-  ClientWidth = 873
+  ClientWidth = 1014
   Menu = MainMenu1
   OnCreate = FormCreate
   LCLVersion = '2.0.6.0'
   object Number1Edit: TEdit
     AnchorSideTop.Control = Owner
     AnchorSideRight.Control = Result
-    Left = 87
+    Left = 69
     Height = 23
-    Top = 15
+    Top = 16
     Width = 74
-    Anchors = []
+    Anchors = [akTop, akRight]
     BorderSpacing.Top = 16
-    BorderSpacing.Right = 17
+    BorderSpacing.Right = 220
     OnChange = Number1EditChange
     TabOrder = 0
     Text = '0'
   end
   object Number2Edit: TEdit
     AnchorSideTop.Control = Number1Edit
+    AnchorSideRight.Control = StringGrid1
     AnchorSideRight.Side = asrBottom
-    Left = 87
+    Left = 69
     Height = 23
-    Top = 55
+    Top = 56
     Width = 74
     Anchors = [akTop, akRight]
     BorderSpacing.Left = 4
@@ -42,7 +43,7 @@ object Form1: TForm1
   object Number1: TLabel
     AnchorSideTop.Control = Owner
     AnchorSideRight.Control = Number1Edit
-    Left = 24
+    Left = 6
     Height = 15
     Top = 16
     Width = 44
@@ -56,7 +57,7 @@ object Form1: TForm1
   object Number2: TLabel
     AnchorSideTop.Control = Owner
     AnchorSideRight.Control = Number2Edit
-    Left = 24
+    Left = 6
     Height = 15
     Top = 56
     Width = 44
@@ -69,8 +70,8 @@ object Form1: TForm1
   object Result: TButton
     AnchorSideTop.Control = Owner
     AnchorSideRight.Control = Owner
-    AnchorSideRight.Side = asrBottom
-    Left = 184
+    AnchorSideRight.Side = asrCenter
+    Left = 363
     Height = 24
     Top = 16
     Width = 288
@@ -84,11 +85,13 @@ object Form1: TForm1
   object StringGrid1: TStringGrid
     AnchorSideLeft.Control = Number1
     AnchorSideTop.Control = Result
-    Left = 184
-    Height = 128
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrCenter
+    Left = 166
+    Height = 120
     Top = 56
     Width = 682
-    Anchors = [akTop]
+    Anchors = [akTop, akRight]
     BorderSpacing.Left = 185
     BorderSpacing.Top = 40
     TabOrder = 3
