@@ -32,6 +32,7 @@ type
     Label3: TLabel;       //Конец поля класса
     procedure Button1Click(Sender: TObject);   //Методы класса
     procedure ExitPrgClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
     procedure Label1Click(Sender: TObject);
     procedure Load2Click(Sender: TObject);       //Если пользователь откажется от
     procedure Memo1Change(Sender: TObject);
@@ -106,6 +107,11 @@ begin
   if Form1.CloseQuery then Form1.Close;
 end;
 
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+
+end;
+
 procedure TForm1.Label1Click(Sender: TObject);
 begin
 
@@ -113,16 +119,16 @@ end;
 
 
 procedure TForm1.Load2Click(Sender: TObject);
-     var s1, s2, s3 : string;
+     var s1, s2, s3 : real;
        begin
          if Load.Execute then
        begin
        if load.FileName <> '' then
             begin
       load_params(s1,s2, s3, load.filename);
-      StrAEdit.Text:=s1;
-      StrBEdit.Text:=s2;
-      StrCEdit.Text:=s3;
+      StrAEdit.Text:=FloatToStr(s1);
+      StrBEdit.Text:=FloatToStr(s2);
+      StrCEdit.Text:=FloatToStr(s3);
             end;
        end;
 end;
@@ -138,14 +144,14 @@ begin
 end;
 
 procedure TForm1.Save2Click(Sender: TObject);
-    var s1,s2, s3: string;
+    var s1,s2, s3: real;
    begin
    if Savelog.Execute then
           if Savelog.FileName <> '' then
               begin
-   s1:=Form1.StrAEdit.Text;
-   s2:=Form1.StrBEdit.Text;
-   s3:=Form1.StrCEdit.Text;
+   s1:=StrToFloat(Form1.StrAEdit.Text);
+   s2:=StrToFloat(Form1.StrBEdit.Text);
+   s3:=StrToFloat(Form1.StrCEdit.Text);
    save_params(s1,s2, s3, Savelog.filename);
    end;
 end;

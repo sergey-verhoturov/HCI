@@ -1,64 +1,64 @@
 object Form1: TForm1
-  Left = 766
-  Height = 314
-  Top = 380
-  Width = 654
+  Left = 425
+  Height = 387
+  Top = 355
+  Width = 685
   Caption = 'Programm Z23a'
-  ClientHeight = 294
-  ClientWidth = 654
+  ClientHeight = 367
+  ClientWidth = 685
   Menu = MainMenu1
+  OnCreate = FormCreate
   LCLVersion = '2.0.6.0'
   object Label1: TLabel
     AnchorSideTop.Control = Owner
     AnchorSideRight.Control = StrAEdit
-    Left = 33
+    Left = 13
     Height = 15
     Top = 14
     Width = 58
     Anchors = [akTop, akRight]
     BorderSpacing.Top = 14
-    BorderSpacing.Right = 21
+    BorderSpacing.Right = 27
     Caption = 'Сторона A'
     ParentColor = False
     OnClick = Label1Click
   end
   object Label2: TLabel
     AnchorSideTop.Control = Label1
-    AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = StrAEdit
-    Left = 34
+    Left = 13
     Height = 15
     Top = 56
     Width = 57
     Anchors = [akTop, akRight]
-    BorderSpacing.Top = 27
-    BorderSpacing.Right = 21
+    BorderSpacing.Top = 42
+    BorderSpacing.Right = 28
     Caption = 'Сторона B'
     ParentColor = False
   end
   object Label3: TLabel
     AnchorSideTop.Control = Label2
     AnchorSideRight.Control = StrCEdit
-    Left = 33
+    Left = 14
     Height = 15
     Top = 96
     Width = 58
     Anchors = [akTop, akRight]
     BorderSpacing.Top = 40
-    BorderSpacing.Right = 21
+    BorderSpacing.Right = 27
     Caption = 'Сторона C'
     ParentColor = False
   end
   object StrAEdit: TEdit
     AnchorSideTop.Control = Owner
     AnchorSideRight.Control = Button1
-    Left = 112
+    Left = 98
     Height = 23
     Top = 14
     Width = 81
     Anchors = [akTop, akRight]
     BorderSpacing.Top = 14
-    BorderSpacing.Right = 28
+    BorderSpacing.Right = 29
     OnChange = StrAEditChange
     TabOrder = 0
     Text = '0'
@@ -66,21 +66,20 @@ object Form1: TForm1
   object StrBEdit: TEdit
     AnchorSideTop.Control = StrAEdit
     AnchorSideRight.Control = Memo1
-    AnchorSideRight.Side = asrBottom
-    Left = 112
+    Left = 99
     Height = 23
     Top = 56
     Width = 81
     Anchors = [akTop, akRight]
     BorderSpacing.Top = 42
-    BorderSpacing.Right = 240
+    BorderSpacing.Right = 28
     TabOrder = 1
     Text = '0'
   end
   object StrCEdit: TEdit
     AnchorSideTop.Control = StrBEdit
     AnchorSideRight.Control = Memo1
-    Left = 112
+    Left = 99
     Height = 23
     Top = 96
     Width = 81
@@ -94,13 +93,13 @@ object Form1: TForm1
     AnchorSideTop.Control = Owner
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrCenter
-    Left = 221
-    Height = 25
+    Left = 208
+    Height = 65
     Top = 14
-    Width = 212
+    Width = 268
     Anchors = [akTop, akRight]
     BorderSpacing.Top = 14
-    BorderSpacing.Right = 53
+    BorderSpacing.Right = 194
     Caption = 'Вычислить высоты'
     OnClick = Button1Click
     TabOrder = 3
@@ -109,13 +108,13 @@ object Form1: TForm1
     AnchorSideTop.Control = Button1
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrCenter
-    Left = 221
-    Height = 216
-    Top = 56
-    Width = 212
+    Left = 208
+    Height = 264
+    Top = 96
+    Width = 268
     Anchors = [akTop, akRight]
-    BorderSpacing.Top = 42
-    BorderSpacing.Right = 53
+    BorderSpacing.Top = 82
+    BorderSpacing.Right = 194
     Lines.Strings = (
       ''
     )

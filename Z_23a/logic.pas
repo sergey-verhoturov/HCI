@@ -13,8 +13,8 @@ type
   end;
 
 function calcHeight(A:real; B: Real; C:real; var calc:Calculation):real;
-procedure load_params(var s1, s2, s3: string; filename: string);
-procedure save_params(var s1, s2, s3: string; filename: string);
+procedure load_params(var s1, s2, s3: real; filename: string);
+procedure save_params(var s1, s2, s3: real; filename: string);
 
 implementation
 
@@ -31,7 +31,7 @@ p: real;
       calc.HC:=(2/C)*sqrt(p*(p-A)*(p-B)*(p-C));
  end;
 
-procedure save_params(var s1, s2, s3: string; filename: string);
+procedure save_params(var s1, s2, s3: real; filename: string);
  var
    f: text;
  begin
@@ -43,7 +43,7 @@ procedure save_params(var s1, s2, s3: string; filename: string);
       close(f);
  end;
 
-procedure load_params(var s1, s2, s3: string; filename: string);
+procedure load_params(var s1, s2, s3: real; filename: string);
  var
    f: text;
  begin
