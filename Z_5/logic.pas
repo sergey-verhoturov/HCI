@@ -13,8 +13,8 @@ type
   end;
 
 function calcSR(A:real; B: Real; var calc:Calculation):real;
-procedure load_params(var s1, s2: string; filename: string);
-procedure save_params(var s1, s2: string; filename: string);
+procedure load_params(var s1, s2: real; filename: string);
+procedure save_params(var s1, s2: real; filename: string);
 
 
 implementation
@@ -28,7 +28,7 @@ function calcSR(A:real; B: Real; var calc:Calculation):real;
       calc.SrG:=(A+B)/2;;
  end;
 
-procedure save_params(var s1, s2: string; filename: string);
+procedure save_params(var s1, s2:real; filename: string);
  var
    f: text;
  begin
@@ -39,7 +39,7 @@ procedure save_params(var s1, s2: string; filename: string);
       close(f);
  end;
 
-procedure load_params(var s1, s2: string; filename: string);
+procedure load_params(var s1, s2: real; filename: string);
  var
    f: text;
  begin

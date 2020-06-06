@@ -103,14 +103,14 @@ end;
 
 
 procedure TForm1.Save1Click(Sender: TObject);
-  var s1,s2: string;
+  var s1,s2: real;
    begin
    if DataFromForm = False then exit;
    if Savelog.Execute then
           if Savelog.FileName <> '' then
               begin
-   s1:=Form1.Number1Edit.Text;
-   s2:=Form1.Number2Edit.Text;
+   s1:=StrToFloat(Form1.Number1Edit.Text);
+   s2:=StrToFloat(Form1.Number2Edit.Text);
    save_params(s1,s2, Savelog.filename);
    end;
 end;
@@ -137,15 +137,15 @@ Memo1.Lines.Add('-----------------------');
 end;
 
 procedure TForm1.Load1Click(Sender: TObject);
-var s1, s2 : string;
+var s1, s2 : real;
   begin
     if Load.Execute then
   begin
   if load.FileName <> '' then
        begin
  load_params(s1,s2,load.filename);
- Number1Edit.Text:=s1;
- Number2Edit.Text:=s2;
+ Number1Edit.Text:=FloatToStr(s1);
+ Number2Edit.Text:=FloatToStr(s2);
        end;
   end;
 
