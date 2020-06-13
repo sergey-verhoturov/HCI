@@ -189,7 +189,7 @@ code{
 
 /* Кнопка */
 .click-me{
-  background: #797979;      /* --- */
+  background: #041638;      /* --- */
   color: var(--text);
   border-radius: 8px;
   padding: 8px 20px;
@@ -203,7 +203,7 @@ code{
 
 /* Выделение кнопки при наведении */
 .click-me:hover{
-  background: var(--primary);      /* --- */
+  background: #00339296;      /* --- */
   color: #797979;
 }
 
