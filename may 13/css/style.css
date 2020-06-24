@@ -16,7 +16,7 @@
   --secondary-light: #ffeeee;
   
 /* основной размер шрифта !!! */
-  --size: 14px;
+  --size: 16px;
   
 /*   остальные размеры */
   --size2: 1.15em;
@@ -204,7 +204,7 @@ code{
 /* Выделение кнопки при наведении */
 .click-me:hover{
   background: #00339296;      /* --- */
-  color: #797979;
+  color: #ffffff;
 }
 
 
